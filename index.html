@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='lwtracker'>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular/angular-resource.min.js"></script>
+  <script src="lib/angular-leaflet-directive/angular-leaflet-directive.js"></script>
+  <script src="lib/angular-ui-bootstrap/ui-bootstrap-0.10.0.js"></script>
+  <script src="lib/leaflet/leaflet.js"></script>
+  <link rel="stylesheet" href="lib/leaflet/leaflet.css">
+  <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
+  <script src="controller.js"></script>
+</head>
+<body class="container" ng-controller="Controller">
+  <h1>Living World Tracker <small>for GuildWars2</small></h1>
+<ul>
+    <li ng-repeat="event in events">
+      <span>{{event.level}}</span>
+      <span>{{event.name}}</span>
+      <span ng-class='colorMe(event)'>{{event.state}}</span>
+    </li>
+</ul>
+  <div ng-controller="Map">
+    <leaflet defaults="defaults" center="center" tiles="gw2" markers="markers" height="480px" width="640px"></leaflet>
+  </div>
+</html>
