@@ -5,11 +5,21 @@ var watchList = [
     "8518DA1E-72D4-42F8-BAEE-36275FFDE12B"
 ];
 
+var changelog = [{
+    "version": "0.1.1",
+    "notes": ["Added Changelog"]
+}, {
+    "version": "0.1.0",
+    "notes": ["Added A Very Merry Wintersday", "Added Map"]
+}];
+
 var lwtracker = angular.module('lwtracker', ['ngResource', 'leaflet-directive'])
     .controller('Controller', function($scope, $log, EventDetail, EventStatus) {
 
         events = {};
         $scope.events = events;
+        $scope.changelog = changelog;
+        $log.log(changelog);
 
         $scope.colorMe = function(event) {
             if (event["state"] == 'Active') {
@@ -87,7 +97,6 @@ var lwtracker = angular.module('lwtracker', ['ngResource', 'leaflet-directive'])
                 url: "https://tiles.guildwars2.com/1/1/{z}/{x}/{y}.jpg"
             },
             defaults: {
-                tileLayer: "http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png",
                 maxZoom: 7,
                 minZoom: 2,
                 path: {
