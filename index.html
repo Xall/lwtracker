@@ -12,15 +12,24 @@
   <script src="controller.js"></script>
 </head>
 <body class="container" ng-controller="Controller">
-  <h1>Living World Tracker <small>for GuildWars2</small></h1>
-<ul>
-    <li ng-repeat="event in events">
-      <span>{{event.level}}</span>
-      <span>{{event.name}}</span>
-      <span ng-class='colorMe(event)'>{{event.state}}</span>
-    </li>
-</ul>
+  <div class="page-header">
+    <h1>Living World Tracker <small>for GuildWars2</small></h1>
+  </div>
+  <a href="http://wiki.guildwars2.com/wiki/A_Very_Merry_Wintersday"><h2>A Very Merry Wintersday</h2></a>
+  <ul>
+      <li ng-repeat="event in events">
+        <span>{{event.level}}</span>
+        <span>{{event.name}}</span>
+        <span ng-class='colorMe(event)'>{{event.state}}</span>
+      </li>
+  </ul>
   <div ng-controller="Map">
     <leaflet defaults="defaults" center="center" tiles="gw2" markers="markers" height="480px" width="640px"></leaflet>
+  </div>
+  <div>
+    <div ng-repeat="change in changelog">
+      <div class="label label-default">{{change.version}}</div>
+        <li ng-repeat="note in change.notes">{{note}}</li>
+    </div>
   </div>
 </html>
